@@ -18,5 +18,11 @@
         <module name="xlate" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="data-formatter" target="1.5" />
+      <module name="marshaller" target="1.5" />
+      <module name="processors" target="1.5" />
+      <module name="transformer" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
