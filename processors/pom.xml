@@ -11,11 +11,11 @@
 
     <artifactId>processors</artifactId>
     <packaging>pom</packaging>
+
     <modules>
         <module>data-formatter</module>
         <module>marshaller</module>
         <module>transformer</module>
     </modules>
-
 
 </project>
