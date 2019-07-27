@@ -1,35 +1,37 @@
-# =============================================
-# springboot configurations
-# ---------------------------------------------
 spring:
   application:
     name: inbound-api
   datasource:
     initialize: false
-
+  activemq:
+    broker-url: ${OPENSHIFT_ACTIVEMQ_BROKER_URL:tcp://localhost:61616}
+    amqp:
+      host: localhost
+      port: 5672
+    in-memory: ${OPENSHIFT_ACTIVEMQ_IN_MEMORY:true}
+    user: ${OPENSHIFT_ACTIVEMQ_USER:admin}
+    password: ${OPENSHIFT_ACTIVEMQ_PASSWORD:password}
+    pool:
+      enabled: ${OPENSHIFT_ACTIVEMQ_POOL_ENABLED:false}
+      expiry-timeout: ${OPENSHIFT_ACTIVEMQ_POOL_EXPIRY_TIMEOUT:0}
+      idle-timeout: ${OPENSHIFT_ACTIVEMQ_POOL_IDLE_TIMEOUT:30000}
+      max-connections: ${OPENSHIFT_ACTIVEMQ_POOL_MAX_CONNECTIONS:10}
 api:
   version: 1
-
 logging:
   config: classpath:logback.xml
-
-# options from org.apache.camel.spring.boot.CamelConfigurationProperties can be configured here
 camel:
   springboot:
-    name: medical-integration-api
+    name: inbound-api
     main-run-controller: true
   component:
     servlet:
       mapping:
         contextPath: /api/v${api.version}/*
     jmxEnabled: true
-
-# lets listen on all ports to ensure we can be invoked from the pod ip address
 server:
   address: 0.0.0.0
   port: 8080
-
-# lets use a different management port in case you need to listen to HTTP requests on 8080
 management:
   security:
     enabled: false
