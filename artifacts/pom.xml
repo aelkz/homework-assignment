@@ -21,25 +21,25 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>process-sources</phase>
-						<configuration>
-							<sources>
-								<source>${project.build.directory}/generated-sources</source>
-							</sources>
-						</configuration>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+<!-- 	<build> -->
+<!-- 		<plugins> -->
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.codehaus.mojo</groupId> -->
+<!-- 				<artifactId>build-helper-maven-plugin</artifactId> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<phase>process-sources</phase> -->
+<!-- 						<configuration> -->
+<!-- 							<sources> -->
+<!-- 								<source>${project.build.directory}/generated-sources</source> -->
+<!-- 							</sources> -->
+<!-- 						</configuration> -->
+<!-- 						<goals> -->
+<!-- 							<goal>add-source</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 <!-- 			<plugin> -->
 <!-- 				<groupId>org.apache.cxf</groupId> -->
 <!-- 				<artifactId>cxf-xjc-plugin</artifactId> -->
@@ -115,7 +115,7 @@
 <!-- 					</instructions> -->
 <!-- 				</configuration> -->
 <!-- 			</plugin> -->
-		</plugins>
-	</build>
+<!-- 		</plugins> -->
+<!-- 	</build> -->
 
 </project>

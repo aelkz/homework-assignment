@@ -1,0 +1,91 @@
+# =============================================
+# springboot configurations
+# ---------------------------------------------
+spring:
+  application:
+    name: xlate-integration-api
+  datasource:
+    initialize: false
+  # =============================================
+  # AMQ configurations
+  # ---------------------------------------------
+  activemq:
+    broker-url:
+      ${OPENSHIFT_ACTIVEMQ_BROKER_URL:tcp://localhost:61616}
+    #broker-url=${AMQP_HOST:not set}
+    #broker-url=failover:(tcp://172.18.1.188:61616,tcp://172.18.1.18:61616)
+    in-memory:
+      ${OPENSHIFT_ACTIVEMQ_IN_MEMORY:true}
+    # Login user of the broker.
+    user:
+      ${OPENSHIFT_ACTIVEMQ_USER:admin}
+    # Login password of the broker.
+    password:
+      ${OPENSHIFT_ACTIVEMQ_PASSWORD:admin}
+    packages:
+      trust-all:
+        ${OPENSHIFT_ACTIVEMQ_TRUST_ALL_PACKAGES:false}
+        # Comma-separated list of specific packages to trust (when not trusting all packages).
+      trusted:
+        ${OPENSHIFT_ACTIVEMQ_TRUSTED_PACKAGES:}
+      # See PooledConnectionFactory.
+    pool:
+      enabled:
+        ${OPENSHIFT_ACTIVEMQ_POOL_ENABLED:false}
+      # Connection expiration timeout in milliseconds.
+      expiry-timeout:
+        ${OPENSHIFT_ACTIVEMQ_POOL_EXPIRY_TIMEOUT:0}
+      # Connection idle timeout in milliseconds.
+      idle-timeout:
+        ${OPENSHIFT_ACTIVEMQ_POOL_IDLE_TIMEOUT:30000}
+      # Maximum number of pooled connections.
+      max-connections:
+        ${OPENSHIFT_ACTIVEMQ_POOL_MAX_CONNECTIONS:1}
+
+api:
+  version: 1
+
+logging:
+  config: classpath:logback.xml
+
+# options from org.apache.META-INF.services.org.apache.camel.spring.boot.CamelConfigurationProperties can be configured here
+camel:
+  springboot:
+    name: xlate-integration-api
+    main-run-controller: true
+  component:
+    servlet:
+      mapping:
+        contextPath: /api/v${api.version}/*
+    jmxEnabled: true
+
+# lets listen on all ports to ensure we can be invoked from the pod ip address
+server:
+  address: 0.0.0.0
+  port: 8080
+
+# lets use a different management port in case you need to listen to HTTP requests on 8080
+management:
+  security:
+    enabled: false
+  address: 0.0.0.0
+  port: 8081
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+# =============================================
+# springboot actuator configurations
+# ---------------------------------------------
+# disable all management endpoints except health
+endpoints:
+  enabled: false
+  health:
+    enabled: true
+  metrics:
+    enabled: true
+  prometheus:
+    enabled: true
+    # if you want to change the default prometheus endpoint, just change the 'id' to another value.
+    id: prometheus
