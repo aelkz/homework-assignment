@@ -16,9 +16,12 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import com.customer.app.Person;
+import com.customer.app.response.ESBResponse;
 import com.redhat.Application;
 
 import static org.apache.activemq.camel.component.ActiveMQComponent.activeMQComponent;
+
+import java.util.UUID;
 
 @Component
 public class RestCamelRoute extends RouteBuilder {
@@ -79,7 +82,35 @@ public class RestCamelRoute extends RouteBuilder {
 
 		from("direct:postXmlToAMQQueue").setExchangePattern(ExchangePattern.InOnly)
 			.to("activemq:queue:q.empi.deim.in")
-			.log("Sending Message...");
+			.log("Sending Message...")
+		.transform(simple("2"))
+		.process(new Processor() {
+			
+			@Override
+			public void process(Exchange exchange) throws Exception {
+				String camelResponse = exchange.getIn().getBody(String.class);
+
+			      ESBResponse esbResponse = new ESBResponse();
+			      esbResponse.setBusinessKey(UUID.randomUUID().toString());
+			      esbResponse.setPublished(true);
+
+			      // Here we hard code the response code values to strings for the demo
+			      // A better practice would be to have an ENUM class
+			      String comment = "NONE";
+			      if (camelResponse.equals("0")) {
+			        comment = "NO MATCH";
+			      } else if (camelResponse.equals("1")) {
+			        comment = "MATCH";
+			      } else if (camelResponse.equals("2")) {
+			        comment = "DONE";
+			      } else {
+			        comment = "ERROR";
+			      }
+			      esbResponse.setComment(comment);
+				
+			      exchange.getIn().setBody(esbResponse);
+			}
+		}).marshal(jaxbDataFormat);
 	}
 
 }
