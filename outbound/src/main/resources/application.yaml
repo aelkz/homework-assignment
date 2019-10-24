@@ -3,7 +3,7 @@
 # ---------------------------------------------
 spring:
   application:
-    name: xlate-integration-api
+    name: outbound-integration-api
   datasource:
     initialize: false
   # =============================================
@@ -40,7 +40,7 @@ spring:
         ${OPENSHIFT_ACTIVEMQ_POOL_IDLE_TIMEOUT:30000}
       # Maximum number of pooled connections.
       max-connections:
-        ${OPENSHIFT_ACTIVEMQ_POOL_MAX_CONNECTIONS:1}
+        ${OPENSHIFT_ACTIVEMQ_POOL_MAX_CONNECTIONS:1}  
 
 api:
   version: 1
@@ -51,7 +51,7 @@ logging:
 # options from org.apache.META-INF.services.org.apache.camel.spring.boot.CamelConfigurationProperties can be configured here
 camel:
   springboot:
-    name: xlate-integration-api
+    name: outbound-integration-api
     main-run-controller: true
   component:
     servlet:
@@ -62,14 +62,14 @@ camel:
 # lets listen on all ports to ensure we can be invoked from the pod ip address
 server:
   address: 0.0.0.0
-  port: 8082
+  port: 8084
 
 # lets use a different management port in case you need to listen to HTTP requests on 8080
 management:
   security:
     enabled: false
   address: 0.0.0.0
-  port: 8083
+  port: 8085
   metrics:
     export:
       prometheus:
@@ -89,3 +89,7 @@ endpoints:
     enabled: true
     # if you want to change the default prometheus endpoint, just change the 'id' to another value.
     id: prometheus
+    
+soap:
+  personEndpoint:
+    wsdlURL: ${OPENSHIFT_PERSON_WSDL_URL:http://localhost:8181/cxf/PersonEJBService/PersonEJB?wsdl}

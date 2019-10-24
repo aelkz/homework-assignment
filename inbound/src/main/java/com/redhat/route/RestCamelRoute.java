@@ -43,7 +43,8 @@ public class RestCamelRoute extends RouteBuilder {
 				.log("${exception.message}")
 				.log("${exception.stacktrace}")
 				.setExchangePattern(ExchangePattern.InOnly)
-				.to("amqp:queue:errorQueue");
+				.maximumRedeliveries(3)
+				.to("amqp:queue:q.empi.transform.dlq");
 
 		// /--------------------------------------------------\
 		// | Configure REST endpoint |
@@ -61,6 +62,7 @@ public class RestCamelRoute extends RouteBuilder {
 		// \--------------------------------------------------/
 
 		DataFormat jaxbDataFormat = new JaxbDataFormat("com.customer.app");
+		DataFormat responseJaxbDF =  new JaxbDataFormat("com.customer.app.response");
 
 		rest().id("restRouteMatch")
 			.description("Match rest service from apache csx example")
@@ -110,7 +112,7 @@ public class RestCamelRoute extends RouteBuilder {
 				
 			      exchange.getIn().setBody(esbResponse);
 			}
-		}).marshal(jaxbDataFormat);
+		}).marshal(responseJaxbDF);
 	}
 
 }

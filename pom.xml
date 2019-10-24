@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.customer.app</groupId>
+    <groupId>com.redhat.app</groupId>
     <artifactId>homework-assignment</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -17,7 +17,7 @@
         <module>outbound</module>
         <!-- the processors module is currently not used -->
         <!--module>processors</module-->
-        <module>customer-features</module>
+<!--    <module>customer-features</module> -->
     </modules>
     
     <licenses>
@@ -36,16 +36,16 @@
 
     <developers>
         <developer>
-            <id>rabreu</id>
-            <name>Raphael Abreu</name>
+            <id>csilvade</id>
+            <name>Cassio Augusto Silva de Freitas</name>
             <organization>RED HAT</organization>
             <roles>
-                <role>architect</role>
+                <role>consultant</role>
                 <role>developer</role>
             </roles>
             <timezone>America/Sao_Paulo</timezone>
             <properties>
-                <githubUrl>https://github.com/aelkz</githubUrl>
+                <githubUrl>https://github.com/csfreitas</githubUrl>
             </properties>
         </developer>
     </developers>

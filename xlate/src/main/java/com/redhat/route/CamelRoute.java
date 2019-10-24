@@ -1,8 +1,12 @@
 package com.redhat.route;
 
+import org.apache.camel.CamelContext;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.converter.jaxb.JaxbDataFormat;
+import org.apache.camel.processor.RedeliveryPolicy;
+import org.apache.camel.spi.DataFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 import com.customer.app.Person;
 import com.redhat.Application;
+import com.redhat.converter.TransformToExecuteMatch;
 import com.sun.mdm.index.webservice.ExecuteMatchUpdate;
 
 @Component
@@ -23,7 +28,14 @@ public class CamelRoute extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-
+    	CamelContext context = getContext();
+    	context.setTypeConverterStatisticsEnabled(true);
+    	//Registry the converter
+    	TransformToExecuteMatch executeMatch = new TransformToExecuteMatch();
+    	context.getTypeConverterRegistry().addTypeConverters(executeMatch);
+    	
+    	DataFormat jaxbDataFormat = new JaxbDataFormat("com.customer.app");
+    	DataFormat jaxbComSunWebserviceDataFormat = new JaxbDataFormat("com.sun.mdm.index.webservice");
         // /--------------------------------------------------\
         // | Handle route exceptions                          |
         // \--------------------------------------------------/
@@ -33,7 +45,8 @@ public class CamelRoute extends RouteBuilder {
                 .log("${exception.message}")
                 .log("${exception.stacktrace}")
                 .setExchangePattern(ExchangePattern.InOnly)
-                .to("amqp:queue:errorQueue");
+                .maximumRedeliveries(3)
+                .to(Application.ACTIVE_MQ_QUEUE_PREFIX+"q.empi.transform.dlq");
 
         // /--------------------------------------------------\
         // | Route definition                                 |
@@ -48,9 +61,9 @@ public class CamelRoute extends RouteBuilder {
         // 3.6 On the command line, run mvn clean install.
 
         from(Application.ACTIVE_MQ_QUEUE_PREFIX+Application.APP_MESSAGE_QUEUE_IN)
-            .unmarshal().jacksonxml(Person.class)
+            .unmarshal(jaxbDataFormat)
             .convertBodyTo(ExecuteMatchUpdate.class)
-            .marshal().jacksonxml()
+            .marshal(jaxbComSunWebserviceDataFormat)
             .to(Application.ACTIVE_MQ_QUEUE_PREFIX+Application.APP_MESSAGE_QUEUE_OUT);
 
     }
