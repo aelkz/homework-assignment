@@ -1,5 +1,7 @@
 package com.redhat.route;
 
+import java.util.UUID;
+
 import javax.ws.rs.core.MediaType;
 
 import org.apache.camel.Exchange;
@@ -17,11 +19,6 @@ import org.springframework.stereotype.Component;
 
 import com.customer.app.Person;
 import com.customer.app.response.ESBResponse;
-import com.redhat.Application;
-
-import static org.apache.activemq.camel.component.ActiveMQComponent.activeMQComponent;
-
-import java.util.UUID;
 
 @Component
 public class RestCamelRoute extends RouteBuilder {
@@ -82,10 +79,9 @@ public class RestCamelRoute extends RouteBuilder {
 			.log("XML BODY: ${body}").to("direct:postXmlToAMQQueue")
 		.endRest();
 
-		from("direct:postXmlToAMQQueue").setExchangePattern(ExchangePattern.InOnly)
+		from("direct:postXmlToAMQQueue").setExchangePattern(ExchangePattern.InOut)
 			.to("activemq:queue:q.empi.deim.in")
 			.log("Sending Message...")
-		.transform(simple("2"))
 		.process(new Processor() {
 			
 			@Override

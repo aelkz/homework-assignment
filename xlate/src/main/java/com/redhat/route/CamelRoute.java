@@ -34,6 +34,9 @@ public class CamelRoute extends RouteBuilder {
     	TransformToExecuteMatch executeMatch = new TransformToExecuteMatch();
     	context.getTypeConverterRegistry().addTypeConverters(executeMatch);
     	
+        // /--------------------------------------------------\
+        // | JAXB Data Formats                          |
+        // \--------------------------------------------------/
     	DataFormat jaxbDataFormat = new JaxbDataFormat("com.customer.app");
     	DataFormat jaxbComSunWebserviceDataFormat = new JaxbDataFormat("com.sun.mdm.index.webservice");
         // /--------------------------------------------------\

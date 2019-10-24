@@ -15,9 +15,6 @@
         <module>inbound</module>
         <module>xlate</module>
         <module>outbound</module>
-        <!-- the processors module is currently not used -->
-        <!--module>processors</module-->
-<!--    <module>customer-features</module> -->
     </modules>
     
     <licenses>

@@ -83,7 +83,8 @@ public class CamelRoute extends RouteBuilder {
             	    + "&defaultOperationName=executeMatchUpdate")
             .log("The Result is:  \nResult code: ${body[0].resultCode}"
             		+ "\nMatch field changed: ${body[0].matchFieldChanged}"
-            		+ "\nOverlay detected: ${body[0].overlayDetected}");
+            		+ "\nOverlay detected: ${body[0].overlayDetected}")
+            .setBody(simple("${body[0].resultCode}"));
 
     }
 }
