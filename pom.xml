@@ -1,198 +1,198 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.redhat.app</groupId>
-    <artifactId>homework-assignment</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+	<groupId>com.redhat.app</groupId>
+	<artifactId>homework-assignment</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
 
-    <modules>
-        <module>artifacts</module>
-        <module>services</module>
-        <module>inbound</module>
-        <module>xlate</module>
-        <module>outbound</module>
-    </modules>
-    
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-            <comments>OSS license for use within Red Hat</comments>
-        </license>
-    </licenses>
+	<modules>
+		<module>artifacts</module>
+		<module>services</module>
+		<module>inbound</module>
+		<module>xlate</module>
+		<module>outbound</module>
+	</modules>
 
-    <organization>
-        <name>Red Hat</name>
-        <url>https://www.redhat.com/en</url>
-    </organization>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>OSS license for use within Red Hat</comments>
+		</license>
+	</licenses>
 
-    <developers>
-        <developer>
-            <id>csilvade</id>
-            <name>Cassio Augusto Silva de Freitas</name>
-            <organization>RED HAT</organization>
-            <roles>
-                <role>consultant</role>
-                <role>developer</role>
-            </roles>
-            <timezone>America/Sao_Paulo</timezone>
-            <properties>
-                <githubUrl>https://github.com/csfreitas</githubUrl>
-            </properties>
-        </developer>
-    </developers>
+	<organization>
+		<name>Red Hat</name>
+		<url>https://www.redhat.com/en</url>
+	</organization>
 
-    <properties>
-        <license.dir>${basedir}/apache-2.0 -license</license.dir>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
-        <fuse.bom.version>7.3.0.fuse-730058-redhat-00001</fuse.bom.version>
-        <springboot.version>1.5.17.RELEASE</springboot.version>
-        <!-- -->
-        <version.activemq.camel>5.11.0.redhat-630396</version.activemq.camel>
-        <version.jms.camel>2.21.0.fuse-720050-redhat-00001</version.jms.camel>
-        <h2.version>1.4.199</h2.version>
-        <springfox.swagger2.version>2.9.2</springfox.swagger2.version>
-        <org.webjars.swagger-ui.version>3.22.2</org.webjars.swagger-ui.version>
-        <org.webjars.locator.version>0.36</org.webjars.locator.version>
-        <jackson.dataformat.xml.version>2.9.4</jackson.dataformat.xml.version>
-        <junit.jupiter.version>5.4.2</junit.jupiter.version>
-        <junit.version>4.12</junit.version>
-        <arquillian.cube.version>1.18.2</arquillian.cube.version>
-        <arquillian.cube.version>1.18.2</arquillian.cube.version>
-        <slf4j.version>1.7.26</slf4j.version>
-        <io.agroal.version>1.3.0.redhat-00001</io.agroal.version>
-        <assertj.version>3.12.1</assertj.version>
-        <io.rest-assured.version>3.3.0</io.rest-assured.version>
-        <!-- -->
-        <hibernate.show_sql>true</hibernate.show_sql>
-        <!-- -->
-        <maven.min.version>3.5.4</maven.min.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <!-- -->
-        <maven.bundle.plugin.version>2.3.7</maven.bundle.plugin.version>
-        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-        <maven.failsafe.plugin.version>2.22.1</maven.failsafe.plugin.version>
-        <maven.vertx.plugin.version>1.0.18</maven.vertx.plugin.version>
-        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-        <maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version>
-        <maven.jboss.plugin.version>7.9.Final</maven.jboss.plugin.version>
-        <maven.build.helper.plugin.version>3.0.0</maven.build.helper.plugin.version>
-        <maven.cxf.xjc.plugin.version>3.3.0</maven.cxf.xjc.plugin.version>
-        <!-- -->
-        <nexusReleaseRepoUrl></nexusReleaseRepoUrl>
-        <nexusSnapshotRepoUrl></nexusSnapshotRepoUrl>
-    </properties>
+	<developers>
+		<developer>
+			<id>csilvade</id>
+			<name>Cassio Augusto Silva de Freitas</name>
+			<organization>RED HAT</organization>
+			<roles>
+				<role>consultant</role>
+				<role>developer</role>
+			</roles>
+			<timezone>America/Sao_Paulo</timezone>
+			<properties>
+				<githubUrl>https://github.com/csfreitas</githubUrl>
+			</properties>
+		</developer>
+	</developers>
+
+	<properties>
+		<license.dir>${basedir}/apache-2.0 -license</license.dir>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<fuse.bom.version>7.3.0.fuse-730058-redhat-00001</fuse.bom.version>
+		<springboot.version>1.5.17.RELEASE</springboot.version>
+		<!-- -->
+		<version.activemq.camel>5.11.0.redhat-630396</version.activemq.camel>
+		<version.jms.camel>2.21.0.fuse-720050-redhat-00001</version.jms.camel>
+		<h2.version>1.4.199</h2.version>
+		<springfox.swagger2.version>2.9.2</springfox.swagger2.version>
+		<org.webjars.swagger-ui.version>3.22.2</org.webjars.swagger-ui.version>
+		<org.webjars.locator.version>0.36</org.webjars.locator.version>
+		<jackson.dataformat.xml.version>2.9.4</jackson.dataformat.xml.version>
+		<junit.jupiter.version>5.4.2</junit.jupiter.version>
+		<junit.version>4.12</junit.version>
+		<arquillian.cube.version>1.18.2</arquillian.cube.version>
+		<arquillian.cube.version>1.18.2</arquillian.cube.version>
+		<slf4j.version>1.7.26</slf4j.version>
+		<io.agroal.version>1.3.0.redhat-00001</io.agroal.version>
+		<assertj.version>3.12.1</assertj.version>
+		<io.rest-assured.version>3.3.0</io.rest-assured.version>
+		<!-- -->
+		<hibernate.show_sql>true</hibernate.show_sql>
+		<!-- -->
+		<maven.min.version>3.5.4</maven.min.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<!-- -->
+		<maven.bundle.plugin.version>2.3.7</maven.bundle.plugin.version>
+		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+		<maven.failsafe.plugin.version>2.22.1</maven.failsafe.plugin.version>
+		<maven.vertx.plugin.version>1.0.18</maven.vertx.plugin.version>
+		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+		<maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version>
+		<maven.jboss.plugin.version>7.9.Final</maven.jboss.plugin.version>
+		<maven.build.helper.plugin.version>3.0.0</maven.build.helper.plugin.version>
+		<maven.cxf.xjc.plugin.version>3.3.0</maven.cxf.xjc.plugin.version>
+		<!-- -->
+		<nexusReleaseRepoUrl></nexusReleaseRepoUrl>
+		<nexusSnapshotRepoUrl></nexusSnapshotRepoUrl>
+	</properties>
 
 
-	 <dependencyManagement>
-	        <dependencies>
-	            <dependency>
-	                <groupId>org.jboss.redhat-fuse</groupId>
-	                <artifactId>fuse-springboot-bom</artifactId>
-	                <version>${fuse.bom.version}</version>
-	                <type>pom</type>
-	                <scope>import</scope>
-	            </dependency>
-	            <dependency>
-	                <groupId>org.springframework.boot</groupId>
-	                <artifactId>spring-boot-dependencies</artifactId>
-	                <version>${springboot.version}</version>
-	                <type>pom</type>
-	                <scope>import</scope>
-	            </dependency>
-	        </dependencies>
-	    </dependencyManagement>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.redhat-fuse</groupId>
+				<artifactId>fuse-springboot-bom</artifactId>
+				<version>${fuse.bom.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${springboot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.felix</groupId>
-                    <artifactId>maven-bundle-plugin</artifactId>
-                    <version>${maven.bundle.plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>maven-bundle-plugin</artifactId>
+					<version>${maven.bundle.plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
-   <repositories>
-        <!-- maven central repository -->
-        <!-- do not use this in production, use your own maven repository -->
-        <repository>
-            <id>central</id>
-            <name>Maven Central Repository</name>
-            <url>https://repo.maven.apache.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <!-- redhat official maven repositories -->
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>red-hat-ga-repository</id>
-            <name>Red Hat GA Repository</name>
-            <url>https://maven.repository.redhat.com/ga</url>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>red-hat-ea-repository</id>
-            <name>Red Hat EA Repository</name>
-            <url>https://maven.repository.redhat.com/earlyaccess/all/</url>
-        </repository>
-    </repositories>
+	<repositories>
+		<!-- maven central repository -->
+		<!-- do not use this in production, use your own maven repository -->
+		<repository>
+			<id>central</id>
+			<name>Maven Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<!-- redhat official maven repositories -->
+		<repository>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>red-hat-ga-repository</id>
+			<name>Red Hat GA Repository</name>
+			<url>https://maven.repository.redhat.com/ga</url>
+		</repository>
+		<repository>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>red-hat-ea-repository</id>
+			<name>Red Hat EA Repository</name>
+			<url>https://maven.repository.redhat.com/earlyaccess/all/</url>
+		</repository>
+	</repositories>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>maven-ga-repository</id>
-            <url>https://repo.maven.apache.org/maven2/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-        <pluginRepository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>red-hat-ga-repository</id>
-            <name>Red Hat GA Repository</name>
-            <url>https://maven.repository.redhat.com/ga</url>
-        </pluginRepository>
-        <pluginRepository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>red-hat-ea-repository</id>
-            <name>Red Hat EA Repository</name>
-            <url>https://maven.repository.redhat.com/earlyaccess/all/</url>
-        </pluginRepository>
-    </pluginRepositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven-ga-repository</id>
+			<url>https://repo.maven.apache.org/maven2/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>red-hat-ga-repository</id>
+			<name>Red Hat GA Repository</name>
+			<url>https://maven.repository.redhat.com/ga</url>
+		</pluginRepository>
+		<pluginRepository>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>red-hat-ea-repository</id>
+			<name>Red Hat EA Repository</name>
+			<url>https://maven.repository.redhat.com/earlyaccess/all/</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 </project>

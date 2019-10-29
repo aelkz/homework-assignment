@@ -76,7 +76,8 @@ public class RestCamelRoute extends RouteBuilder {
 
 					}
 			}).marshal(jaxbDataFormat)// Transform to XML again to send to amq
-			.log("XML BODY: ${body}").to("direct:postXmlToAMQQueue")
+			.log("XML BODY: ${body}")
+			.to("direct:postXmlToAMQQueue")
 		.endRest();
 
 		from("direct:postXmlToAMQQueue").setExchangePattern(ExchangePattern.InOut)
