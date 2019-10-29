@@ -91,5 +91,6 @@ endpoints:
     id: prometheus
     
 soap:
-  personEndpoint:
+  person:
+    endpoint: ${OPENSHIFT_PERSON_ENDPOINT:http://localhost:8181/cxf/PersonEJBService/PersonEJB}
     wsdlURL: ${OPENSHIFT_PERSON_WSDL_URL:http://localhost:8181/cxf/PersonEJBService/PersonEJB?wsdl}

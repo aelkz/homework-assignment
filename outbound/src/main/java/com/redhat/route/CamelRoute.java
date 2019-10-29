@@ -14,6 +14,7 @@ import org.apache.camel.spi.DataFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +29,13 @@ public class CamelRoute extends RouteBuilder {
 
     @Autowired
     private Environment env;
+    
+    @Value("${soap.person.endpoint}")
+    private String personSOAPEndpoint;
+    
+    @Value("${soap.person.wsdlURL}")
+    private String personWsdl;
+    
 
     @Override
     public void configure() throws Exception {
@@ -77,9 +85,9 @@ public class CamelRoute extends RouteBuilder {
 				}
 			})
             .setExchangePattern(ExchangePattern.InOut)
-            .to("cxf://http://localhost:8181/cxf/PersonEJBService/PersonEJB"
+            .to("cxf://" + personSOAPEndpoint
             	    + "?serviceClass=com.sun.mdm.index.webservice.PersonEJB"
-            	    + "&wsdlURL=http://localhost:8181/cxf/PersonEJBService/PersonEJB?wsdl"
+            	    + "&wsdlURL=" + personWsdl
             	    + "&defaultOperationName=executeMatchUpdate")
             .log("The Result is:  \nResult code: ${body[0].resultCode}"
             		+ "\nMatch field changed: ${body[0].matchFieldChanged}"

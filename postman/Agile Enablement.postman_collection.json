@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "2f1de952-a051-4443-be67-f081e1c2608d",
+		"name": "Agile Enablement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/match - inbound",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					},
+					{
+						"key": "Postman-Token",
+						"value": "9125b6d0-58a9-4445-baf3-5c82a12078a3"
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<Person xmlns=\"http://www.app.customer.com\">\n    <age>30</age>\n    <legalname>\n        <given>Curumim</given>\n        <family>Cunha</family>\n    </legalname>\n    <fathername>Angelo</fathername>\n    <myName>Cassio Augusto</myName>\n    <gender>\n\t    <code>1</code>\n\t    <displaytext>Male</displaytext>\n\t    <codesystem>1</codesystem>\n\t    <codesystemversion>1</codesystemversion>\n    </gender>\n</Person>"
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8080/api/v1/match",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"match"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/match - inbound - No Match",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					},
+					{
+						"key": "Postman-Token",
+						"value": "9125b6d0-58a9-4445-baf3-5c82a12078a3"
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<p:Person xmlns:p=\"http://www.app.customer.com\"\n  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n  xsi:schemaLocation=\"http://www.app.customer.com PatientDemographics.xsd \">\n\n  <p:age>30</p:age>\n  <p:legalname>\n    <p:given>Someone</p:given>\n    <p:family>Last</p:family>\n  </p:legalname>\n  <p:fathername>Dad</p:fathername>\n  <p:mothername>Mom</p:mothername>\n  <p:gender xsi:type=\"p:Code\">\n    <p:code>Male</p:code>\n  </p:gender>\n</p:Person>"
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8080/api/v1/match",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"match"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/match - inbound - Match",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					},
+					{
+						"key": "Postman-Token",
+						"value": "9125b6d0-58a9-4445-baf3-5c82a12078a3"
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<p:Person xmlns:p=\"http://www.app.customer.com\"\n  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n  xsi:schemaLocation=\"http://www.app.customer.com PatientDemographics.xsd \">\n\n  <p:age>30</p:age>\n  <p:legalname>\n    <p:given>First</p:given>\n    <p:family>Last</p:family>\n  </p:legalname>\n  <p:fathername>Dad</p:fathername>\n  <p:mothername>Mom</p:mothername>\n  <p:gender xsi:type=\"p:Code\">\n    <p:code>Male</p:code>\n  </p:gender>\n</p:Person>"
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8080/api/v1/match",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"match"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
